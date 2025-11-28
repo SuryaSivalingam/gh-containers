@@ -1,0 +1,17 @@
+name: dockerAction
+
+on: push
+
+jobs:
+  docker-job:
+    name: Docker-job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        id: dockerId
+        with:
+          number1: 8
+          number2: 5
+      - run: echo ${{steps.dockerId.outputs.result}}
+        
