@@ -1,0 +1,18 @@
+name: dockerAction
+description: calc to test a docker container action
+inputs:
+  number1:
+    required: true
+    default: 0
+  number2:
+    required: true
+    default: 0
+outputs:
+  result:
+    description: Result of sum of two numbers
+runs:
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{inputs.number1}}
+    - ${{inputs.number2}}
