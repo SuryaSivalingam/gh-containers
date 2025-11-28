@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: chmod +x entrypoint.sh
       - uses: ./
         id: dockerId
         with:
           number1: 8
           number2: 5
       - run: echo ${{steps.dockerId.outputs.result}}
+      - run: cat $GITHUB_WORKSPACE/containerOutputFile.txt
+      - run: cat ${{github.workspace}}/containerOutputFile.txt
         
